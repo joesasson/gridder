@@ -26,7 +26,7 @@ function gridder(){
   // set rows via map
   let sizeData = sheetData.map((row, i) => {
     if(i === 0) { return null }
-    let style = row[0]
+    let style = row[0].toUpperCase()
     let styleRow = generateStyleRow(style, sizeHeaders, stockBySku)
     return styleRow
   }).filter(row => row)
@@ -49,7 +49,7 @@ const mapStockBySku = (variants, sizeHeaders) => {
   sizeHeaders.forEach(size => emptySizeRun[size] = 0)
   variants.forEach(variant => {
     if(!variant.sku){ return }
-    let style = getStyleFromSku(variant.sku)
+    let style = getStyleFromSku(variant.sku).toUpperCase()
     let size = getSizeFromSku(variant.sku)
     let stockQty = variant.inventory_quantity
     // if the style already exists as a key, set the value for the key of size as stockQty
@@ -95,6 +95,6 @@ const getSizeFromOptionName = optionName => {
   return size
 }
 
-const getStyleFromSku = sku => sku.split("_")[0]
+const getStyleFromSku = sku => sku.split("_")[0].toUpperCase()
 
 const getSizeFromSku = sku => sku.split("_")[1]
