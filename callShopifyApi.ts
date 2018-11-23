@@ -13,19 +13,19 @@ function getAllVariants(products){
 function getAllProducts(){
   var count = getResourceAsJson("products/count")
   var products = []
-  var pages = Math.ceil(count / 250.0)
+  let limit = 250.0
+  var pages = Math.ceil(count / limit)
   var page = 1
   while(page <= pages){
     var productsRes = getResourceAsJson("products",  { limit: 250, page: page })
-    products.push(productsRes);
+    products = products.concat(productsRes);
     page += 1
   }
-  products = products.reduce(function(a, b){ return a.concat(b) })
   return products
 }
 
 function makeUrl(resource, params){
-  var SHOPIFY_BASE_URL = "https://theshoenet.myshopify.com/admin/"
+  var SHOPIFY_BASE_URL = shopifyUrl()
   var paramsString = ""
   if(params){
     paramsString = "?"
