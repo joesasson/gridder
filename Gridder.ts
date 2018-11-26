@@ -76,16 +76,16 @@ const getSizeHeaders = variants => {
   })
   // Then filter out all the duplicates
   let sizes: number[] = unique(sizeCollection)
-  let minSize = 5
-  let maxSize = 13
+  let minSize = 1
+  let maxSize = 13.5
   // exclude 12.5 because we don't have it
-  let excludedSize = 12.5
+  // let excludedSize = 12.5 && value != excludedSize
   // sort ascending
   return sizes.sort((a, b) => a - b)
   // filter out text
   .filter(value => !isNaN(value))
   // filter out everything besides sizes from 5 to 13
-  .filter(value => value >= minSize && value <= maxSize && value != excludedSize)
+  .filter(value => value >= minSize && value <= maxSize)
 }
 
 const unique = array => array.filter((value, i, self) => self.indexOf(value) === i)
