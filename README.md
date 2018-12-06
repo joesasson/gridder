@@ -4,5 +4,7 @@
 
 Gridder is a Google Sheets Add On that pulls stock data from shopify based on a column of skus and displays them in a size grid.
 
-- [ ] Pull Data From API
-- [ ] Display in Grid
+- [x] Pull Data From API
+- [x] Display in Grid
+- [x] Pull and display the title of the style
+- [ ] Add a column to the end that calculates the total in stock for that style
